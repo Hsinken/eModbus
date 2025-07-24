@@ -55,11 +55,8 @@ FCType FCT::getType(uint8_t functionCode) {
 // the effective type
 FCType FCT::redefineType(uint8_t functionCode, const FCType type) {
   uint8_t fc = functionCode & 0x7F;
-  
-  // Allow modifications for yet undefined codes only
-  if (table[fc] == FCILLEGAL) {
-    table[fc] = type;
-  }
+  //There are just too many weird modules out there, so it’s better if we can set the type to whatever we need. Otherwise, it’s really hard to use.
+  table[fc] = type;
   return table[fc];
 }
 
